@@ -28,8 +28,8 @@ def is_purchase_valid(user_id, invitem_id, verif_token):
     Args:
         user_id, string: the user whose purchase we are validating
         invitem_id, string: the id of the inventory item the user purchased
-        verif_token, string: your partner verification token, which can be found
-          in the "Settings" tab of the Partner Dashboard
+        verif_token, string: the verification token that used to validate the
+            purchase
 
     Exceptions:
         InvalidVerifTokenException: raised if the given verifToken is invalid

@@ -17,20 +17,17 @@ server-side usage:
     # Receive these POST variables from your minnoCallback() function
     user_id = request.params["userId"]
     invitem_id = request.params["invitemId"]
-
-    # Fill this in with your partner verification token. You can get this from
-    # the "Settings" tab in the Partner Dashboard
-    verif_token = xxx
+    verif_token = request.params["verifToken"]
 
     if minno.is_purchase_valid(user_id, invitem_id, verif_token):
         # Deliver the purchased item to your user!
     else:
         # Oops, the user hasn't purchased this item!
 
-You receive the `userId` and `invitemId` from the client-side `minnoCallback()`
-function that gets executed after a user purchases an item. You can then POST
-these parameters to your server endpoint for verification before giving the user
-access to your premium service.
+You receive the `userId`, `invitemId`, and `verifToken` request parameters from
+the client-side `minnoCallback()` function that gets executed after a user
+purchases an item. You can then POST these parameters to your server endpoint
+for verification before giving the user access to your premium item.
 
 The implementation of the verification is very simple--it uses Python's urllib2
 module to perform a synchronous GET request to our purchase-verification
